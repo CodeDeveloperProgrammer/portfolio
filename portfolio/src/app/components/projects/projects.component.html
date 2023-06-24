@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<div class="container">
+  <pagination-controls (pageChange)="pagina = $event" previousLabel="Anterior" nextLabel="Siguiente">
+  </pagination-controls>
+  <ul id="ulProjects">
+    <li class="project" *ngFor="let project of projects | paginate: { itemsPerPage: 6, currentPage: pagina }">
+      <a [routerLink]="['/proyecto', project._id]">
+        <div class="image">
+          <img src="{{ url + 'get-image/' + project.image }}" *ngIf="project.image" />
+        </div>
+        <h3>{{ project.name }}</h3>
+        <p>{{ project.category }}</p>
+      </a>
+    </li>
+  </ul>
+</div>
